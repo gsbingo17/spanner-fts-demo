@@ -16,8 +16,8 @@ from Restaurants
   ORDER BY SCORE(name_token, '%s') DESC;`
 
 const (
-	projectId  = "binguo-learning-centre-352514"
-	instanceId = "test-202304"
+	projectId  = "test"
+	instanceId = "test"
 	databaseId = "testdb"
 )
 

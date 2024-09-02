@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	projectId  = "binguo-learning-centre-352514"
-	instanceId = "test-202304"
+	projectId  = "test"
+	instanceId = "test"
 	databaseId = "testdb"
 )
 
