@@ -3,6 +3,13 @@
 ## Overview
 `spanner-search-demo` is a web application that allows users to perform text searches and view the results. The application is built using Vue.js for the frontend and Go for the backend. This application is designed to showcase the full-text search capabilities of Cloud Spanner.
 
+## Prerequisites
+
+- Node.js (version 20 or later recommende)
+- Golang (version 1.23.0)
+- Google Cloud project with Cloud Spanner enabled
+- Service account with permissions to access Spanner (see [https://cloud.google.com/iam/docs/creating-managing-service-accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts))
+  
 ## Project Setup
 
 ### Install Dependencies
@@ -16,6 +23,14 @@ To start the development server with hot-reloading, run:
 
 ```sh
 npm run serve
+```
+
+The web application can then be accessed in the following ways:
+
+```
+  App running at:
+  - Local:   http://localhost:3000/
+  - Network: http://192.168.0.192:3000/
 ```
 
 ### Compiles and Minifies for Production
@@ -73,7 +88,7 @@ Create the index for full text search
 CREATE SEARCH INDEX RestaurantsIndex ON Restaurants(name_token, categories_token);
 ```
 
-Use the sample data [Fast Food Restaurants Across America](https://data.world/datafiniti/fast-food-restaurants-across-america) and import it into Cloud Spanner to demonstrate its full-text search capabilities.
+Use the sample data [Fast Food Restaurants Across America](https://data.world/datafiniti/fast-food-restaurants-across-america) and import it into Cloud Spanner to demonstrate its full-text search capabilities. Edit `import.go` to configure your Spanner settings.
 
 ```sh
 go run main.go -import -file=Datafiniti_Fast_Food_Restaurants_Jun19.csv
@@ -81,7 +96,7 @@ go run main.go -import -file=Datafiniti_Fast_Food_Restaurants_Jun19.csv
 
 ### Run the Backend Server
 
-To start the backend server, run:
+To start the backend server, edit `main.go` to configure your Spanner settings, and then run the following command:
 
 ```sh
 go run main.go
@@ -110,8 +125,14 @@ The application also prints each search result to the console. This helps in ver
 
 ## Directory Structure
 
+```
 project-root/
 ├── main.go
+├── importer/
+│   ├── import.go
+├── search/
+│   ├── search.go
+│   └── results.go
 ├── public/
 │   ├── index.html
 ├── src/
@@ -125,6 +146,7 @@ project-root/
 ├── package.json
 ├── README.md
 └── vue.config.js
+```
 
 ## Additional Information
 
