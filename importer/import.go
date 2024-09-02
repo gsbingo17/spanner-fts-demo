@@ -24,7 +24,7 @@ func ImportData(filePath string) error {
 	client, err := spanner.NewClient(ctx,
 		fmt.Sprintf("projects/%s/instances/%s/databases/%s", projectId, instanceId, databaseId))
 	if err != nil {
-		return fmt.Errorf("Error creating Spanner client: %v", err)
+		return fmt.Errorf("error creating Spanner client: %v", err)
 
 	}
 	defer client.Close()
@@ -40,7 +40,7 @@ func ImportData(filePath string) error {
 	reader := csv.NewReader(file)
 	header, err := reader.Read()
 	if err != nil {
-		return fmt.Errorf("Error reading header row: %v", err)
+		return fmt.Errorf("error reading header row: %v", err)
 	}
 	columnNames := header
 
@@ -99,7 +99,7 @@ func ImportData(filePath string) error {
 			// Apply the current batch of mutations
 			_, err := client.Apply(ctx, mutations)
 			if err != nil {
-				return fmt.Errorf("Error applying mutations: %v", err)
+				return fmt.Errorf("error applying mutations: %v", err)
 			}
 			// Reset mutations for the next batch
 			mutations = []*spanner.Mutation{}
@@ -110,7 +110,7 @@ func ImportData(filePath string) error {
 	if len(mutations) > 0 {
 		_, err := client.Apply(ctx, mutations)
 		if err != nil {
-			return fmt.Errorf("Error applying mutations: %v", err)
+			return fmt.Errorf("error applying mutations: %v", err)
 		}
 	}
 	fmt.Println("CSV data imported to Spanner successfully!")
