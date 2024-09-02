@@ -1,7 +1,7 @@
-# search-app
+# Spanner Full Text Search Demo
 
 ## Overview
-`search-app` is a web application that allows users to perform text searches and view the results. The application is built using Vue.js for the frontend and Go for the backend. This application is designed to showcase the full-text search capabilities of Cloud Spanner.
+`spanner-search-demo` is a web application that allows users to perform text searches and view the results. The application is built using Vue.js for the frontend and Go for the backend. This application is designed to showcase the full-text search capabilities of Cloud Spanner.
 
 ## Project Setup
 
